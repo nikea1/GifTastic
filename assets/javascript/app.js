@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+	$('.glyphicon').hide();
 	var topics = ["frog", "anime", "dog", "video games", "judo", "cat"];
 	
 	//create buttons from topic list
@@ -70,14 +70,21 @@ $(document).ready(function(){
 				//console.log("gif: ", data[i].images);
 
 				//$('<img>').attr('src', "http://media0.giphy.com/media/xvV3NUMbSTqSY/200_s.gif").appendTo(gifDiv);
+				var gc = $('<div>')
+					.addClass('pull-left');
+				var rating = data[i].rating
+
+				$('<p>').text('Rating: ' + (rating == '' ? "Not rated" : rating)).appendTo(gc);
 
 				$('<img>')
 					.addClass('gifs')
-					.attr('src', data[i].images.fixed_height_still.url)//current src
-					.attr('data-still', data[i].images.fixed_height_still.url)//still img
-					.attr('data-gif', data[i].images.fixed_height.url)//get play
+					.attr('src', data[i].images.fixed_height_small_still.url)//current src
+					.attr('data-still', data[i].images.fixed_height_small_still.url)//still img
+					.attr('data-gif', data[i].images.fixed_height_small.url)//get play
 					.attr('data-state', 'still')//get state
-					.appendTo(gifDiv);
+					.appendTo(gc);
+
+				gc.appendTo(gifDiv);
 
 			}
 		
@@ -99,6 +106,8 @@ $(document).ready(function(){
 
 				if(response.data.length == 0){
 					$('#message').text(gif + " does not exist");
+					$('.form-group').addClass('has-warning');
+					$('.glyphicon').show();
 					return false;
 
 				}
@@ -108,9 +117,13 @@ $(document).ready(function(){
 				if(findDuplicates(gif))//checks for dupicates and pushes new string if unique
 				{
 					$('#message').text("Topic already exists");	//prints out message if duplicate found
+					$('.form-group').addClass('has-warning');
+					$('.glyphicon').show();
 				}
 				else{
 					$('#message').empty();
+					$('.form-group').removeClass('has-warning');
+					$('.glyphicon').hide();
 				}
 
 				generateButton(); //creates new button

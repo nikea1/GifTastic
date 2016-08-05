@@ -22,16 +22,24 @@
 		<div class="row">
 		
 		<div class="col-md-8">
-			<div id="gif-container" class="well"></div>
+			<div id="gif-container" class="well  clearfix"></div>
 		</div>
 		
 		<div id="gif-form" class="col-md-4">
 			<div class="well">
-			<form>
-				<input id="gif-input" type="text" placeholder="Search"><br />
-				<input id="find-gif" type="submit" name="Submit">
-				<p id="message"></p>
-			</form>
+				<form>
+					<div class="form-group">
+						<label class="control-label" for="gif-input">Input: </label>
+						<input id="gif-input" class="form-control" type="text" placeholder="Search" aria-describedby="message">
+
+						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  						<span id="gif-inputStatus" class="sr-only">(error)</span>
+						<p id="message" class="help-block"></p>
+					</div>
+					
+						<input id="find-gif" type="submit" name="Submit">
+					
+				</form>
 			</div>
 		</div>
 		</div>
