@@ -69,7 +69,7 @@ $(document).ready(function(){
 		
 		var search = $(this).attr('data-topic'); //gets data stored in button
 		
-		var giphyURL = "http://api.giphy.com/v1/gifs/search?q="+search+"&limit=10 &api_key=dc6zaTOxFJmzC";
+		var giphyURL = "https://api.giphy.com/v1/gifs/search?q="+search+"&limit=10 &api_key=dc6zaTOxFJmzC";
 
 		$.ajax({url:giphyURL, method: 'GET'}).done(function(response){
 
@@ -119,7 +119,7 @@ $(document).ready(function(){
 			//converts input to lowercase
 			var gif = $('#gif-input').val().trim().toLowerCase();
 
-			var giphyURL = "http://api.giphy.com/v1/gifs/search?q="+gif+"&limit=10 &api_key=dc6zaTOxFJmzC";
+			var giphyURL = "https://api.giphy.com/v1/gifs/search?q="+gif+"&limit=10 &api_key=dc6zaTOxFJmzC";
 
 			$.ajax({url: giphyURL, method:'GET'}).done(function(response){
 
